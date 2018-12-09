@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>2017 Whisk(e)y Advent Calendar</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <main role="main" class="container">
+    <div class="whiskey-main">
+      <h1>🥃 2017 Whisk(e)y Advent 🥃</h1>
+      <hr />
+      <table id="adventTable" class="table table-bordered table-striped">
+        <tbody>
+          <tr align="center">
+            <td id="d1" onclick="c(this)">1</td>
+            <td id="d2" onclick="c(this)">2</td>
+            <td id="d3" onclick="c(this)">3</td>
+          </tr>
+          <tr align="center">
+            <td id="d4" onclick="c(this)">4</td>
+            <td id="d5" onclick="c(this)">5</td>
+            <td id="d6" onclick="c(this)">6</td>
+          </tr>
+          <tr align="center">
+            <td id="d7" onclick="c(this)">7</td>
+            <td id="d8" onclick="c(this)">8</td>
+            <td id="d9" onclick="c(this)">9</td>
+          </tr>
+          <tr align="center">
+            <td id="d10" onclick="c(this)">10</td>
+            <td id="d11" onclick="c(this)">11</td>
+            <td id="d12" onclick="c(this)">12</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script>
+      function rot13(str) {
+        return str.replace(/([A-M])|([N-Z])/g, function (m, p1, p2) {
+          return String.fromCharCode(m.charCodeAt(0) + (p1 ? 13 : -13));
+        });
+      }
+      function decrypt(str) {
+        return atob(rot13(str));
+      }
+
+      var data = {
+        "d1": {
+          "label": "1",
+          "c": "ZykgEJEyLJEvdKVgZGNgYFORaKA0aJxsMKW5VRIkaKEpb24gWiNxZikgE2xlbmMpMTEpL2ggZGg="
+        },
+        "d2": {
+          "label": "2",
+          "c": "ZGRpVRplMmMlcnAvbidzVR9jMJSuVRSnMJD="
+        },
+        "d3": {
+          "label": "3",
+          "c": "ZGNpVRSiMKWsb3IyVRRnLnIuLJEoVRAhc2s="
+        },
+        "d4": {
+          "label": "4",
+          "c": "BFkgIThlVRWhbUMlbmllVP0gHTIhdTIkVSEyaKOsMFOQLKArVQR0"
+        },
+        "d5": {
+          "label": "5",
+          "c": "APkgH2llcnWhVR5vcnElVP0gG2S4LJAhbiOPbTSjayOQb3Wu"
+        },
+        "d6": {
+          "label": "6",
+          "c": "BPkgF2S2LJxhbiODb2EpdJ0="
+        },
+        "d7": {
+          "label": "7",
+          "c": "AykgGJSjaUWpMFOAb29yVP0gIThlVSOlLKElMPOOcnWhbiOALJx0"
+        },
+        "d8": {
+          "label": "8",
+          "c": "AikgEmlubTSnM2SuVRlzbTS5VSAWbmdsMFOALJx0"
+        },
+        "d9": {
+          "label": "9",
+          "c": "AFkgIThlVRdsMJ5saKMldPNxBN=="
+        },
+        "d10": {
+          "label": "10",
+          "c": "ZGZpVRxvaTluVR1ja2lubm9u"
+        },
+        "d11": {
+          "label": "11",
+          "c": "ZikgDKWkLmInVSIpM2IhMTSpbN=="
+        },
+        "d12": {
+          "label": "12",
+          "c": "ZFkgE2xlbm1vcmSuM2llVR5lL3EhciORW29yVQRy"
+        }
+      }
+      function c(x) {
+        cell = document.getElementById(x.id);
+        if (cell.innerText != data[x.id]["label"]) {
+          //reset label
+          cell.innerText = data[x.id]["label"];
+        } else {
+          cell.innerText = decrypt(data[x.id]["c"]);
+        }
+      }
+    </script>
+  </main>
+
+</body>
+
+</html>

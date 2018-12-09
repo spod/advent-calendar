@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>2018 Whisk(e)y Advent Calendar</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <main role="main" class="container">
+    <div class="whiskey-main">
+      <h1>🥃 2018 Whisk(e)y Advent 🥃</h1>
+      <hr />
+      <table id="adventTable" class="table table-bordered table-striped">
+        <tbody>
+          <tr align="center">
+            <td id="d7" onclick="c(this)">7</td>
+            <td id="d12" onclick="c(this)">12</td>
+            <td id="d4" onclick="c(this)">4</td>
+          </tr>
+          <tr align="center">
+            <td id="d5" onclick="c(this)">5</td>
+            <td id="d9" onclick="c(this)">9</td>
+            <td id="d2" onclick="c(this)">2</td>
+          </tr>
+          <tr align="center">
+            <td id="d11" onclick="c(this)">11</td>
+            <td id="d1" onclick="c(this)">1</td>
+            <td id="d6" onclick="c(this)">6</td>
+          </tr>
+          <tr align="center">
+            <td id="d8" onclick="c(this)">8</td>
+            <td id="d3" onclick="c(this)">3</td>
+            <td id="d10" onclick="c(this)">10</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script>
+      function rot13(str) {
+        return str.replace(/([A-M])|([N-Z])/g, function (m, p1, p2) {
+          return String.fromCharCode(m.charCodeAt(0) + (p1 ? 13 : -13));
+        });
+      }
+      function decrypt(str) {
+        return atob(rot13(str));
+      }
+
+      var data = {
+        "d1": {
+          "label": "1",
+          "c": "VzDgG3Whbmdlcmll"
+        },
+        "d2": {
+          "label": "2",
+          "c": "VzkgFTlnaTxhbmDgHTSyayNxAg=="
+        },
+        "d3": {
+          "label": "3",
+          "c": "VzZgGJSjLJxsLJ4gZGV="
+        },
+        "d4": {
+          "label": "4",
+          "c": "VzcgH2hlbUElciODb2ludN=="
+        },
+        "d5": {
+          "label": "5",
+          "c": "VzVgG3OwaJEhbiN0VRdyLJluVP0gDm91cmWvbg=="
+        },
+        "d6": {
+          "label": "6",
+          "c": "VzRxVRAhcmlib3HgD3Wvc3Apbmc="
+        },
+        "d7": {
+          "label": "7",
+          "c": "VzLgE2xlbmMhcmAsLKZ="
+        },
+        "d8": {
+          "label": "8",
+          "c": "VzggDJ1ydKDgEnIzaJ9u"
+        },
+        "d9": {
+          "label": "9",
+          "c": "VzRwVSEoMFOSbmdsaKAoYPOCcmlnaJ5hbN=="
+        },
+        "d10": {
+          "label": "10",
+          "c": "VzHgG3OwaJEhbiNoH2SsdPtGMJRgYFOPb3IyLm9uXFNmVPZxZyOYaJxrMKWyLJ4gZGV="
+        },
+        "d11": {
+          "label": "11",
+          "c": "VzRyVSdoaKA0bTIwaJc="
+        },
+        "d12": {
+          "label": "12",
+          "c": "VzRgDmIucm9tLJAoVSOlLKDgH21va2H="
+        }
+      }
+      function c(x) {
+        cell = document.getElementById(x.id);
+        if (cell.innerText != data[x.id]["label"]) {
+          //reset label
+          cell.innerText = data[x.id]["label"];
+        } else {
+          cell.innerText = decrypt(data[x.id]["c"]);
+        }
+      }
+    </script>
+  </main>
+
+</body>
+
+</html>
